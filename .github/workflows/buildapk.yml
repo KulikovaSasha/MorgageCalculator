@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build with Buildozer
         run: |
           pip3 install --user --upgrade buildozer Cython virtualenv
@@ -19,7 +19,7 @@ jobs:
           cd ${{ github.workspace }}
           buildozer android debug
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: package
           path: bin/*.apk
