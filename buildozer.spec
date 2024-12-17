@@ -51,7 +51,7 @@ icon.filename = %(source.dir)s/data/logo/logo512min.png
 
 # (list) Supported orientations
 # Valid options are: landscape, portrait, portrait-reverse or landscape-reverse
-orientation = landscape
+orientation = portrait
 
 # (list) List of service to declare
 #services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
@@ -67,7 +67,7 @@ orientation = landscape
 osx.python_version = 3
 
 # Kivy version to use
-osx.kivy_version = 2.3.0
+osx.kivy_version = 1.9.1
 
 #
 # Android specific
@@ -283,7 +283,7 @@ fullscreen = 0
 
 # (list) The Android archs to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
 # In past, was `android.arch` as we weren't supporting builds for multiple archs at the same time.
-android.archs = armeabi-v7a
+android.archs = arm64-v8a, armeabi-v7a
 
 # (int) overrides automatic versionCode computation (used in build.gradle)
 # this is not the same as app version and should only be edited if you know what you're doing
