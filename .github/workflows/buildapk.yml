@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build with Buildozer
         run: |
-          pip3 install buildozer Cython virtualenv
+          pip3 install --user --upgrade buildozer cython==0.29.19
           export PATH=$PATH:~/.local/bin/
           export APP_ANDROID_ACCEPT_SDK_LICENSE=1
           export BUILDOZER_WARN_ON_ROOT=0
