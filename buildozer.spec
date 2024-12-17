@@ -107,7 +107,7 @@ android.api = 33
 android.minapi = 21
 
 # (int) Android SDK version to use
-android.sdk = 20
+#android.sdk = 20
 
 # (str) Android NDK version to use
 android.ndk = 25b
@@ -130,7 +130,7 @@ android.private_storage = True
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
 # when an update is due and you just want to test/build your package
- android.skip_update = False
+#android.skip_update = False
 
 # (bool) If True, then automatically accept SDK license
 # agreements. This is intended for automation only. If set to False,
@@ -139,7 +139,7 @@ android.private_storage = True
  android.accept_sdk_license = True
 
 # (str) Android entry point, default is ok for Kivy-based app
-#android.entrypoint = org.kivy.android.PythonActivity
+android.entrypoint = org.kivy.android.PythonActivity
 
 # (str) Full name including package path of the Java class that implements Android Activity
 # use that parameter together with android.entrypoint to set custom Java class instead of PythonActivity
