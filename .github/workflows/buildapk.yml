@@ -14,7 +14,9 @@ jobs:
           sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev automake          
           export PATH=$PATH:~/.local/bin/
           export APP_ANDROID_ACCEPT_SDK_LICENSE=1
-          pip3 install --user --upgrade buildozer Cython virtualenv 
+          export BUILDOZER_WARN_ON_ROOT=0
+          cd ${{ github.workspace }}
+          pip install --user --upgrade buildozer Cython virtualenv 
           buildozer appclean
           buildozer android debug
       - name: Upload artifacts
