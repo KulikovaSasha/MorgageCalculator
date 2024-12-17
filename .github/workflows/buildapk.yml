@@ -11,6 +11,7 @@ jobs:
       - name: Build with Buildozer
         run: |
           pip install buildozer
+          pip install cython==0.29.19
           sudo apt install -y python3-pip python3-setuptools python3-virtualenv git zip unzip openjdk-8-jdk
           buildozer -v android debug
       - name: Upload artifacts
