@@ -7,7 +7,7 @@ title = Mortgage calculator
 package.name = mortgagecalculator
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.test
+package.domain = org.KulikovaSasha
 
 # (str) Source code where the main.py live
 source.dir = .
