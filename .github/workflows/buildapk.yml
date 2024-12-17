@@ -15,6 +15,7 @@ jobs:
           export PATH=$PATH:~/.local/bin/
           export APP_ANDROID_ACCEPT_SDK_LICENSE=1
           pip3 install --user --upgrade buildozer Cython virtualenv 
+          buildozer appclean
           buildozer android debug
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
