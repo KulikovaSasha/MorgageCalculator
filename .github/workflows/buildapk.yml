@@ -1,5 +1,5 @@
 name: Build APK
-on: [push,pull_request,workflow_dispatch]
+on: [push,pull_request]
 
 jobs:
   build-android:
@@ -8,10 +8,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
-          python-version: 3.11.9
+          java-version: 17
+          distribution: "temurin"
       - name: Build with Buildozer
         run: |
           sudo apt update
@@ -28,3 +29,20 @@ jobs:
         with:
           name: package
           path: bin/*.apk
+      - name: Create Release
+        id: create-new-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+          asset_path: ./my-artifact.zip
+          asset_name: my-artifact-${{ github.run_number }}.zip
+          asset_content_type: application/zip
