@@ -18,7 +18,8 @@ jobs:
           export APP_ANDROID_ACCEPT_SDK_LICENSE=1
           export BUILDOZER_WARN_ON_ROOT=0
           cd ${{ github.workspace }}
-          pip install --user --upgrade buildozer Cython virtualenv 
+          pip install --user --upgrade buildozer
+          pip install --upgrade Cython
           buildozer android debug
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
