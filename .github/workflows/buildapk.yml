@@ -31,7 +31,7 @@ jobs:
           path: bin/*.apk
       - name: Releasing using Hub
         uses: actions/create-release@v1
-        env:
+        with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           APP_FOLDER: app
           RELEASE_TITLE: New Build
