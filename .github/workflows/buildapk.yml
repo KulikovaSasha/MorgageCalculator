@@ -30,8 +30,8 @@ jobs:
           name: package
           path: bin/*.apk
       - name: Releasing using Hub
-        uses: actions/create-release@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          APP_FOLDER: app
-          RELEASE_TITLE: New Build
+        run: |
+          android.release_artifact = apk
+          buildozer appclean
+          buildozer android release
+        
