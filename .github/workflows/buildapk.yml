@@ -30,8 +30,8 @@ jobs:
           name: package
           path: bin/*.apk
       - name: Releasing using Hub
-        uses: ShaunLWM/action-release-debugapk@master
+        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{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}}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           APP_FOLDER: app
           RELEASE_TITLE: New Build
