@@ -24,18 +24,8 @@ jobs:
           pip3 install --user --upgrade buildozer
           pip install --upgrade Cython
           buildozer android debug
-      - name: Build release APK and AAB after test
-        run: |
-          ./gradlew test
-          ./gradlew assembleRelease
-          ./gradlew bundleRelease
-      - name: Upload APK
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
           path: app/build/outputs/apk/release/app-release-unsigned.apk
-      - name: Upload AAB Bundle
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release.aab
-          path: app/build/outputs/bundle/release/app-release.aab
