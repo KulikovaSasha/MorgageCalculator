@@ -33,17 +33,18 @@ jobs:
           name: app-release
           path: bin/*.apk
 
-      - name: Create Release and Upload APK
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}
-          RELEASE_NAME="Release $TAG_NAME"
-          if ! gh release view $TAG_NAME > /dev/null 2>&1; then
-            gh release create "$TAG_NAME" bin/*.apk \
-              --title "$RELEASE_NAME" \
-              --notes "APK for version $TAG_NAME"
-          else
-            gh release upload "$TAG_NAME" bin/*.apk --clobber
-          fi
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+
+        with:
+          tag_name: "v1.0"
+          release_name: "demo"
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
