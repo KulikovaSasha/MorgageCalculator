@@ -42,9 +42,5 @@ jobs:
         with:
           tag_name: "v1.0"
           release_name: "demo"
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
           draft: false
           prerelease: false
