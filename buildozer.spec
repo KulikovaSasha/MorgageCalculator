@@ -37,7 +37,7 @@ version = 1.0.2
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.9.10,hostpython3==3.9.10,kivy,https://github.com/kivymd/KivyMD/archive/master.zip,materialyoucolor,
+requirements = python3==3.9.10,hostpython3==3.9.10,kivy,kivymd,https://github.com/kivymd/KivyMD/archive/master.zip,materialyoucolor,
     exceptiongroup,
     asyncgui,
     asynckivy
