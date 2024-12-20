@@ -7,6 +7,15 @@ from kivymd.uix.navigationdrawer import (
     MDNavigationDrawerItem, MDNavigationDrawerItemTrailingText
 )
 
+from kivymd.uix.label import MDLabel
+from kivymd.uix.tab import (
+    MDTabsItemIcon,
+    MDTabsItemText,
+    MDTabsItem,
+)
+
+from kivymd.font_definitions import fonts
+
 KV = '''
 <DrawerItem>
     active_indicator_color: "#e7e4c0"
@@ -44,6 +53,18 @@ KV = '''
 
 MDScreen:
     md_bg_color: self.theme_cls.backgroundColor
+    
+    MDTabsPrimary:
+        id: tabs
+        pos_hint: {"center_x": .5, "center_y": .6}
+        size_hint_x: 1
+                
+        MDDivider:
+                
+        MDTabsCarousel:
+            id: related_content_container
+            size_hint_y: None
+            height: dp(320)        
 
     MDNavigationLayout:
 
@@ -52,11 +73,11 @@ MDScreen:
             MDScreen:
 
                 MDButton:
-                    pos_hint: {"center_x": .5, "center_y": .5}
+                    pos_hint: {"left_x": 0, "center_y": 0.965}
                     on_release: nav_drawer.set_state("toggle")
 
                     MDButtonText:
-                        text: "Open Drawer"
+                        text: "Menu"
 
         MDNavigationDrawer:
             id: nav_drawer
@@ -90,31 +111,55 @@ MDScreen:
                 MDNavigationDrawerDivider:
 
                 DrawerItem:
-                    icon: "gmail"
-                    text: "Inbox"
-                    trailing_text: "+99"
-                    trailing_text_color: "#4a4939"
+                    icon: "folder"
+                    text: "My files"
+                    #trailing_text: "+99"
+                    #trailing_text_color: "#4a4939"
+                    
+                MDNavigationDrawerDivider:
 
                 DrawerItem:
-                    icon: "send"
-                    text: "Outbox"
+                    icon: "account-multiple"
+                    text: "Shared with me"
+
+                MDNavigationDrawerDivider:
+                
+                DrawerItem:
+                    icon: "star"
+                    text: "Starred"
+
+                MDNavigationDrawerDivider:
+                
+                DrawerItem:
+                    icon: "history"
+                    text: "Resent"
+
+                MDNavigationDrawerDivider:
+                
+                DrawerItem:
+                    icon: "checkbox-marked"
+                    text: "Shared with me"
+
+                MDNavigationDrawerDivider:
+                
+                DrawerItem:
+                    icon: "upload"
+                    text: "Upload"
 
                 MDNavigationDrawerDivider:
 
-                MDNavigationDrawerLabel:
-                    text: "Labels"
-                    padding_y: "12dp"
+                #MDNavigationDrawerLabel:
+                    #text: "Labels"
+                    #padding_y: "12dp"
 
-                DrawerLabel:
-                    icon: "information-outline"
-                    text: "Label"
+                #DrawerLabel:
+                    #icon: "information-outline"
+                    #text: "Label"
 
-                DrawerLabel:
-                    icon: "information-outline"
-                    text: "Label"
-                    
-                Widget:
-                    
+                
+
+            
+
 '''
 
 
@@ -144,6 +189,33 @@ class DrawerItem(MDNavigationDrawerItem):
 
 
 class MortgageCalculator(MDApp):
+    def on_start(self):
+        for tab_icon, tab_name in {
+            "folder": "My files",
+            "account-multiple": "Shared with me",
+            "star": "Starred",
+            "history": "Recent",
+            "checkbox-marked": "Shared with me",
+            "upload": "Upload",
+        }.items():
+            self.root.ids.tabs.add_widget(
+                MDTabsItem(
+                    MDTabsItemIcon(
+                        icon=tab_icon,
+                    ),
+                    MDTabsItemText(
+                        text=tab_name,
+                    ),
+                )
+            )
+            self.root.ids.related_content_container.add_widget(
+                MDLabel(
+                    text=tab_name,
+                    halign="center",
+                )
+            )
+            self.root.ids.tabs.switch_tab(icon="airplane")
+
     def build(self):
         return Builder.load_string(KV)
 
