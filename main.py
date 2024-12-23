@@ -52,19 +52,23 @@ KV = '''
 
 
 MDScreen:
-    md_bg_color: self.theme_cls.backgroundColor
     
+    md_bg_color: self.theme_cls.backgroundColor
+
     MDTabsPrimary:
+        
         id: tabs
-        pos_hint: {"center_x": .5, "center_y": .6}
-        size_hint_x: 1
-                
+        allow_stretch: False
+        pos_hint: {"center_x": .5, "center_y": .5}
+        #size_hint_x: .5
+        #label_only: True
+
         MDDivider:
-                
+
         MDTabsCarousel:
             id: related_content_container
             size_hint_y: None
-            height: dp(320)        
+            height: root.height - tabs.ids.tab_scroll.height       
 
     MDNavigationLayout:
 
@@ -73,7 +77,8 @@ MDScreen:
             MDScreen:
 
                 MDButton:
-                    pos_hint: {"left_x": 0, "center_y": 0.965}
+                    size_hint_y: None
+                    #pos_hint: {"left_x": 0, "center_y": 0.965}
                     on_release: nav_drawer.set_state("toggle")
 
                     MDButtonText:
@@ -115,7 +120,7 @@ MDScreen:
                     text: "My files"
                     #trailing_text: "+99"
                     #trailing_text_color: "#4a4939"
-                    
+
                 MDNavigationDrawerDivider:
 
                 DrawerItem:
@@ -123,25 +128,25 @@ MDScreen:
                     text: "Shared with me"
 
                 MDNavigationDrawerDivider:
-                
+
                 DrawerItem:
                     icon: "star"
                     text: "Starred"
 
                 MDNavigationDrawerDivider:
-                
+
                 DrawerItem:
                     icon: "history"
                     text: "Resent"
 
                 MDNavigationDrawerDivider:
-                
+
                 DrawerItem:
                     icon: "checkbox-marked"
                     text: "Shared with me"
 
                 MDNavigationDrawerDivider:
-                
+
                 DrawerItem:
                     icon: "upload"
                     text: "Upload"
@@ -156,9 +161,9 @@ MDScreen:
                     #icon: "information-outline"
                     #text: "Label"
 
-                
 
-            
+
+
 
 '''
 
