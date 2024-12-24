@@ -37,7 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG_NAME="v1.0.3"
+          TAG_NAME="v1.0.4"
           RELEASE_NAME="$TAG_NAME"
           if ! gh release view $TAG_NAME > /dev/null 2>&1; then
             gh release create "$TAG_NAME" bin/*.apk \
