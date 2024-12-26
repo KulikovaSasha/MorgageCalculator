@@ -17,8 +17,15 @@ from kivymd.uix.tab import (
 from kivymd.font_definitions import fonts
 
 KV = '''
-<DrawerItem>
-    active_indicator_color: "#4a4939"
+# https://stackoverflow.com/questions/65698145/kivymd-tab-name-containing-icons-and-text
+# this import will prevent disappear tabs through some clicks on them)))
+#:import md_icons kivymd.icon_definitions.md_icons
+#:import fonts kivymd.font_definitions.fonts
+
+# Menu item in the DrawerList list.
+<DrawerItem>:
+    theme_text_color: "Custom"
+    #on_release: self.parent.set_color_item(self)
 
     MDNavigationDrawerItemLeadingIcon:
         icon: root.icon
@@ -58,7 +65,6 @@ MDScreen:
     MDTabsPrimary:
 
         id: tabs
-        md_bd_color: 0, 0, 0, 1
         allow_stretch: True
         pos_hint: {"center_x": .5, "center_y": .5}
         #size_hint_x: .5
@@ -70,7 +76,7 @@ MDScreen:
             id: related_content_container
             size_hint_y: None
             height: root.height - tabs.ids.tab_scroll.height       
-            background_color: 0.1, 0.1, 0.1, 1
+
     MDNavigationLayout:
 
         MDScreenManager:
@@ -79,16 +85,11 @@ MDScreen:
 
                 MDButton:
                     size_hint_y: None
-                 
                     #pos_hint: {"left_x": 0, "center_y": 0.965}
                     on_release: nav_drawer.set_state("toggle")
 
                     MDButtonText:
                         text: "Menu"
-                        
-                        
-                        
-
 
         MDNavigationDrawer:
             id: nav_drawer
@@ -170,9 +171,6 @@ MDScreen:
                     #icon: "information-outline"
                     #text: "Label"
                     
-        
-                    
-                
 
 '''
 
@@ -180,7 +178,6 @@ MDScreen:
 class DrawerLabel(MDBoxLayout):
     icon = StringProperty()
     text = StringProperty()
-
 
 
 class DrawerItem(MDNavigationDrawerItem):
@@ -191,16 +188,16 @@ class DrawerItem(MDNavigationDrawerItem):
 
     _trailing_text_obj = None
 
-    '''def on_trailing_text(self, instance, value):
+    def on_trailing_text(self, instance, value):
         self._trailing_text_obj = MDNavigationDrawerItemTrailingText(
             text=value,
             theme_text_color="Custom",
             text_color=self.trailing_text_color,
         )
-        self.add_widget(self._trailing_text_obj)'''
+        self.add_widget(self._trailing_text_obj)
 
-    '''def on_trailing_text_color(self, instance, value):
-        self._trailing_text_obj.text_color = value'''
+    def on_trailing_text_color(self, instance, value):
+        self._trailing_text_obj.text_color = value
 
 
 class MortgageCalculator(MDApp):
@@ -214,7 +211,6 @@ class MortgageCalculator(MDApp):
             "chart-areaspline": "Graph",
             "chart-pie": "Chart",  # chart-arc
             "book-open-variant": "Sum",
-
         }.items():
             self.root.ids.tabs.add_widget(
                 MDTabsItem(
@@ -235,7 +231,6 @@ class MortgageCalculator(MDApp):
             self.root.ids.tabs.switch_tab(icon="airplane")
 
     def build(self):
-
         return Builder.load_string(KV)
 
 
