@@ -126,7 +126,7 @@ MDScreen:
 
                 DrawerItem:
                     icon: "account-circle"
-                    
+
                     text: "About author"
                     #trailing_text: "+99"
                     #trailing_text_color: "#d43e19"
@@ -170,7 +170,7 @@ MDScreen:
                 #DrawerLabel:
                     #icon: "information-outline"
                     #text: "Label"
-                    
+
 
 '''
 
