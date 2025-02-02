@@ -9,13 +9,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: install distutils
-        run: pip install --upgrade setuptools
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
-          python-version: '3.13'
+          java-version: 17
+          distribution: "temurin"
 
       - name: Build with Buildozer
         run: |
