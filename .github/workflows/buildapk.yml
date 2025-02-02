@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: install distutils
-        run: pip install --upgrade setuptoolss
+        run: pip install --upgrade setuptools
 
       - name: Set up Python
         uses: actions/setup-python@v5
