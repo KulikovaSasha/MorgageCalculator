@@ -11,8 +11,9 @@ jobs:
 
       - name: Set up Python
         uses: |
-          import setuptools.dist
+          
           actions/setup-python@v5
+          import setuptools.dist
         with:
           python-version: '3.13'
 
