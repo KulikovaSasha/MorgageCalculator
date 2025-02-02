@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: install distutils
-        run: sudo apt-get install --reinstall python3.13-distutils
+        run: pip install --upgrade setuptoolss
 
       - name: Set up Python
         uses: actions/setup-python@v5
