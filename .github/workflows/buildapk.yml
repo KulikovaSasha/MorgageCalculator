@@ -9,6 +9,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: install distutils
+        run: sudo apt-get install --reinstall python3.13-distutils
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
